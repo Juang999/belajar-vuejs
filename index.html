@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>belajar vue js</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand&display-swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 5%;
+            font-family: 'Quicksand', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <img src="logo.png" width="80">
+            <h1>{{ bilangan }}</h1>
+            <p>Bilangan ini {{ infoBilangan }}</p>
+            <p>The Progressive JavaScript Framework</p>
+        </header>
+        <footer id="footer">
+            <p>Copyright @2022</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <script>
+       const vm = new Vue({
+           el: '#app',
+           data: {
+                name: "Bangkit Juang Raharjo",
+                pesan: "Hello world",
+                qty: 3,
+                namaDepan: "Bangkit Juang ",
+                namaBelakang: "Raharjo",
+                bilangan: 3,
+           },
+           methods: {
+               getName: function(first, second) {
+                   return "Hello " + this.name
+               },
+               ubahNama: function(namaBaru) {
+                   return this.name = namaBaru
+               }
+           },
+           computed: {
+            totalBayar: function() {
+                return this.qty * 1000;
+            },
+            namaLengkap: function() {
+                return this.namaDepan + this.namaBelakang;
+            },
+            infoBilangan: function() {
+                return this.bilangan%2 === 0 ? 'genap' : 'ganjil';
+            }
+           }
+       })
+    </script>
+</body>
+</html>
