@@ -9,8 +9,13 @@
 <body>
 
     <div id="vueApp">
-        <h3>Belajar {{ subject }}</h3>
-        <h3>Number {{ number }}</h3>
+        <h3>Belajar VueJS</h3>
+
+        <ol>
+            <li v-for="subject in subjects" :key="subject.title">
+                {{ subject.title }} - Type = {{ subject.type }}
+            </li>
+        </ol>
     </div>
 
     <script src="https://unpkg.com/vue@3"></script>
@@ -18,15 +23,13 @@
         const sample = {
             data() {
                 return {
-                    subject: 'Vuejs',
-                    number: 0
+                    subjects: [
+                        {title: 'JavaScript', type: 'Native'},
+                        {title: 'Vue', type: 'Framework'},
+                        {title: 'React', type: 'Framework'},
+                    ],
                 }
             },
-            mounted() {
-                setInterval(() => {
-                    this.number++
-                }, 500)
-            }
         }
 
         Vue.createApp(sample).mount('#vueApp');
