@@ -5,17 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vuejs</title>
+    <style>
+        .active {
+            color: blue;
+        }
+    </style>
 </head>
 <body>
 
     <div id="vueApp">
         <h3>Belajar VueJS</h3>
 
-        <ol>
+        <ol :class="{active: isActive}">
             <li v-for="subject in subjects" :key="subject.title">
                 {{ subject.title }} - Type = {{ subject.type }}
             </li>
         </ol>
+
+        <button @click="activate()">Activate</button>
     </div>
 
     <script src="https://unpkg.com/vue@3"></script>
@@ -28,8 +35,14 @@
                         {title: 'Vue', type: 'Framework'},
                         {title: 'React', type: 'Framework'},
                     ],
+                    isActive: false,
                 }
             },
+            methods: {
+                activate() {
+                    this.isActive = !this.isActive;
+                }
+            }
         }
 
         Vue.createApp(sample).mount('#vueApp');
